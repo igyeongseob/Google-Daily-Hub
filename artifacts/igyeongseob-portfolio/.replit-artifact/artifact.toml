@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/portfolio/"
+title = "이경섭 개발자 포트폴리오"
+description = "소프트웨어 개발자를 준비하는 이경섭의 학습 경험과 미디어 제작 팀 프로젝트에서의 역할·협업 경험을 사실에 맞게 소개하는 독립형 정적 포트폴리오입니다."
+version = "1.0.0"
+id = "artifacts/igyeongseob-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/portfolio/" ]
+localPort = 21999
+
+[services.development]
+run = "pnpm --filter @workspace/igyeongseob-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/igyeongseob-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/igyeongseob-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21999"
+BASE_PATH = "/portfolio/"

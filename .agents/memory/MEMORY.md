@@ -1,0 +1,1 @@
+- [Static portfolio routing](static-portfolio-routing.md) — use the artifact prefix for Vite preview, but relative asset URLs for GitHub Pages builds.
