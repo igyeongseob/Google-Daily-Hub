@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { getGetHomeNewsQueryKey, getGetHomeWeatherQueryKey, useGetHomeNews, useGetHomeWeather } from '@workspace/api-client-react';
 import { Cloud, CloudSun, Grip, Mic, Search, Sun, Wind, X } from 'lucide-react';
+import TodoList from '@/components/todo-list';
 
 type SpeechRecognitionLike = {
   lang: string;
@@ -243,6 +244,7 @@ export default function Home() {
           </div>
         )}
       </section>
+      <TodoList />
       <footer className="page-footer">
         <span>검색으로 오늘을 시작해요</span>
         <a href="https://www.google.com" aria-label="Google 홈페이지">Google</a>

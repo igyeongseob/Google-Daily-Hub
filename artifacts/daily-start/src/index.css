@@ -549,6 +549,45 @@
 .news-error, .news-empty { min-height: 110px; border-top: 1px solid #f0f1f2; display: flex; align-items: center; justify-content: center; gap: 12px; color: #70757a; font-size: 13px; }
 .news-error p, .news-empty p { margin: 0; }
 .news-empty svg { color: #9aa0a6; }
+.todo-section {
+  width: min(100%, 708px); margin-top: 16px; padding: 22px 28px 16px; border: 1px solid #e8eaed; border-radius: 18px;
+  background: #fff; box-shadow: 0 1px 2px rgba(60,64,67,.04);
+}
+.todo-heading-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 14px; padding: 0 1px 15px; }
+.todo-heading-row h2 { margin: 0; font-size: 19px; font-weight: 500; line-height: 1.35; color: #202124; letter-spacing: -.3px; }
+.todo-counts { display: flex; align-items: center; gap: 10px; padding-bottom: 2px; color: #70757a; font-size: 12px; white-space: nowrap; }
+.todo-counts strong { color: #4285f4; font-weight: 600; font-variant-numeric: tabular-nums; }
+.todo-count-divider { width: 1px; height: 15px; background: #dadce0; }
+.todo-form { display: flex; gap: 9px; margin-bottom: 8px; }
+.todo-form input {
+  min-width: 0; flex: 1; height: 42px; padding: 0 14px; border: 1px solid #dadce0; border-radius: 10px; outline: 0;
+  background: #fff; color: #202124; font: 400 14px 'Google Sans', 'Noto Sans KR', sans-serif; transition: border-color .18s ease, box-shadow .18s ease;
+}
+.todo-form input::placeholder { color: #9aa0a6; }
+.todo-form input:focus { border-color: #1a73e8; box-shadow: 0 0 0 2px rgba(26,115,232,.12); }
+.todo-form button {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 77px; padding: 0 13px; border: 0; border-radius: 10px;
+  background: #1a73e8; color: #fff; font: 500 13px 'Google Sans', 'Noto Sans KR', sans-serif; cursor: pointer;
+  transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+.todo-form button:hover:not(:disabled) { background: #1765cc; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(26,115,232,.22); }
+.todo-form button:active:not(:disabled) { transform: translateY(0); }
+.todo-form button:disabled { background: #e8eaed; color: #9aa0a6; cursor: not-allowed; }
+.todo-list { list-style: none; padding: 0; margin: 0; }
+.todo-row {
+  min-height: 51px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 7px 10px;
+  border-top: 1px solid #f0f1f2; border-radius: 9px; transition: background .18s ease, transform .18s ease, box-shadow .18s ease;
+  animation: todo-enter .3s cubic-bezier(.2,.7,.3,1) both;
+}
+.todo-row:hover { background: #f8f9fa; transform: translateX(3px); box-shadow: 0 2px 7px rgba(60,64,67,.06); }
+.todo-label { min-width: 0; flex: 1; display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.todo-checkbox { width: 18px; height: 18px; flex: 0 0 auto; margin: 0; accent-color: #1a73e8; cursor: pointer; }
+.todo-title { overflow-wrap: anywhere; color: #3c4043; font-size: 14px; transition: color .2s ease, opacity .2s ease; }
+.todo-row.is-completed .todo-title { color: #9aa0a6; text-decoration: line-through; text-decoration-thickness: 1px; }
+.todo-check-mark { min-width: 29px; color: #34a853; font-size: 11px; text-align: right; }
+.todo-storage-warning { margin: 4px 0 8px; color: #b06000; font-size: 12px; }
+.todo-empty { margin: 0; padding: 18px 10px 8px; border-top: 1px solid #f0f1f2; color: #70757a; font-size: 13px; text-align: center; }
+@keyframes todo-enter { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 .page-footer { margin-top: auto; width: min(100%, 1100px); display: flex; justify-content: space-between; align-items: center; padding-top: 43px; color: #9aa0a6; font-size: 11px; }
 .page-footer a { color: #70757a; text-decoration: none; }
 
@@ -573,6 +612,13 @@
   .live-label { font-size: 10px; }
   .headline-link { gap: 11px; min-height: 67px; }
   .headline-title { font-size: 13px; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .todo-section { padding: 19px 17px 12px; border-radius: 16px; }
+  .todo-heading-row h2 { font-size: 17px; }
+  .todo-counts { gap: 7px; font-size: 11px; }
+  .todo-label { gap: 10px; }
+  .todo-title { font-size: 13px; }
+  .todo-form input { font-size: 13px; }
+  .todo-form button { min-width: 68px; padding: 0 10px; }
   .page-footer { padding-top: 32px; }
 }
 @media (prefers-reduced-motion: reduce) {
