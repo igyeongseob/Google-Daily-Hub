@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: home
+    description: Data for the personal start page
 paths:
   /healthz:
     get:
@@ -24,6 +26,53 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /home/weather:
+    get:
+      operationId: getHomeWeather
+      tags: [home]
+      summary: Get current weather
+      description: Returns current weather for the supplied coordinates
+      parameters:
+        - name: latitude
+          in: query
+          required: true
+          schema:
+            type: number
+            minimum: -90
+            maximum: 90
+        - name: longitude
+          in: query
+          required: true
+          schema:
+            type: number
+            minimum: -180
+            maximum: 180
+      responses:
+        "200":
+          description: Current weather
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HomeWeather"
+        "502":
+          description: Weather provider unavailable
+  /home/news:
+    get:
+      operationId: getHomeNews
+      tags: [home]
+      summary: Get recent technology news
+      description: Returns recent technology headlines
+      responses:
+        "200":
+          description: Recent headlines
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/NewsHeadline"
+        "502":
+          description: News provider unavailable
 components:
   schemas:
     HealthStatus:
@@ -33,4 +82,48 @@ components:
           type: string
       required:
         - status
+    HomeWeather:
+      type: object
+      properties:
+        temperatureC:
+          type: number
+        apparentTemperatureC:
+          type: number
+        humidityPercent:
+          type: integer
+        windSpeedKmh:
+          type: number
+        weatherCode:
+          type: integer
+        description:
+          type: string
+        timezone:
+          type: string
+        observedAt:
+          type: string
+      required:
+        - temperatureC
+        - apparentTemperatureC
+        - humidityPercent
+        - windSpeedKmh
+        - weatherCode
+        - description
+        - timezone
+        - observedAt
+    NewsHeadline:
+      type: object
+      properties:
+        title:
+          type: string
+        publisher:
+          type: string
+        publishedAt:
+          type: ["string", "null"]
+        url:
+          type: string
+      required:
+        - title
+        - publisher
+        - publishedAt
+        - url
 

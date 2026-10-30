@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "오늘의 시작"
+description = "날씨, 실시간 시계, 기술 뉴스와 검색을 한 화면에 모은 한국어 개인 시작 페이지입니다."
+version = "1.0.0"
+id = "artifacts/daily-start"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25942
+
+[services.development]
+run = "pnpm --filter @workspace/daily-start run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/daily-start", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/daily-start/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25942"
+BASE_PATH = "/"
